@@ -1,4 +1,4 @@
-package com.isikatp.back;
+package com.isikatp.back.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -1,10 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="webjars/bootstrap/4.0.0-2/css/bootstrap.min.css" />
 </head>
-<body>
-$END$
+<body >
+
+    <div class="col-12 mx-auto mt-5 text-center">
+        <p>
+        <form  th:action="@{/post}"   method="POST" class="form-control">
+            Nom : <input type="text" name="nom" class="text-primary"/> <br/> <br /> <br />
+                <input type="submit" value="Valider" class="btn btn-outline-primary" />
+        </form>
+        </p>
+    </div>
+
+    <script type="text/javascript" src="webjars/bootstrap/4.0.0-2/js/bootstrap.min.js"></script>
 </body>
 </html>
