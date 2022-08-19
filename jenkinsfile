@@ -28,5 +28,12 @@ pipeline {
                sh "docker build -t dockerapp ."
             }
         }
+        stage('docker-send'){
+            steps{
+                sh "docker login -u 24032403 -p 123456789"
+                sh "docker tag dockerapp 24032403/dockerapp"
+                sh "docker push 24032403/dockerapp:latest"
+            }
+        }
     }
 }
