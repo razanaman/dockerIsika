@@ -1,0 +1,42 @@
+pipeline {
+    agent any
+
+    tools {
+        maven "Maven_3_8_6"
+    }
+
+    stages {
+        stage('Build') {
+            steps {
+                // Get some code from a GitHub repository
+                git 'https://github.com/yannsen/dockerIsika.git'
+			
+                sh 'mvn -f pom.xml -B -DskipTests  package' 
+				
+				        stash includes: 'target/back-matinal-0.0.1-SNAPSHOT.jar', name: 'targetfiles'
+
+            }
+        }
+        
+        stage('Test') { 
+            steps{
+                sh "mvn clean test"
+            }
+        }
+        
+        stage('image') {
+            steps { 
+                   unstash 'targetfiles'
+                   script {
+                       sh 'docker build . -f Dockerfile2 -t dockerapp:latest' 
+                   }
+            }
+        
+        stage('docker-send'){
+            steps{
+                sh "docker login -u 24032403 -p 123456789"
+                sh "docker tag dockerapp 24032403/dockerapp"
+                sh "docker push 24032403/dockerapp:latest"
+            }
+        }
+}
