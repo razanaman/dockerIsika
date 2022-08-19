@@ -31,6 +31,7 @@ pipeline {
                        sh 'docker build -f Dockerfile2 . dockerapp:latest' 
                    }
             }
+	}
         
         stage('docker-send'){
             steps{
