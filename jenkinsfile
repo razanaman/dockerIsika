@@ -2,9 +2,10 @@ pipeline {
     agent any
     
 
-    //tools {
-    //    maven "Maven_3_8_6"
-    //}
+    //Il faut votre version de maaven que vous avez créé dans le Pipeline de Jenkins
+    tools {
+       maven "Maven_3_8_6"
+    }
 
     stages {
         stage('Build') {
