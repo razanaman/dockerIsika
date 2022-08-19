@@ -28,7 +28,7 @@ pipeline {
             steps { 
                    unstash 'targetfiles'
                    script {
-                       sh 'docker build -f Dockerfile2 . dockerapp:latest' 
+                       sh 'docker build -t dockerapp -f Dockerfile2 .' 
                    }
             }
 	}
