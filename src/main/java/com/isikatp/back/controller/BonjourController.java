@@ -20,4 +20,12 @@ public class BonjourController {
         model.addAttribute("personne", nom);
         return "accueil";
     }
+
+    public String salut(String nom){
+        return nom;
+    }
+
+    public int somme(int a, int b){
+        return a+b;
+    }
 }
