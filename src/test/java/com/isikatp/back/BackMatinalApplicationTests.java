@@ -1,10 +1,10 @@
 package com.isikatp.back;
 
 import com.isikatp.back.controller.BonjourController;
+import org.junit.Before;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.ui.Model;
 
 import java.util.Collection;
 import java.util.Map;
@@ -19,6 +19,7 @@ class BackMatinalApplicationTests {
 	void contextLoads() {
 
 	}
+
 	@Test
 	public void testBonjourController() {
 
@@ -27,6 +28,12 @@ class BackMatinalApplicationTests {
 		String result = bonjourController.salut("Alain");
 		assertEquals(expected, result);
 	}
+	@Test
+	public void testSomme() {
 
+		int expected = 8;
+		int result = bonjourController.somme(3,5);
+		assertEquals(expected, result);
+	}
 
 }
