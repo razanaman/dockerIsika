@@ -1,20 +1,32 @@
 pipeline {
     agent any
 
+    tools {
+        maven "Maven_3_8_6"
+    }
+
     stages {
         stage('Build') {
             steps {
-                echo 'Building..'
+                // Get some code from a GitHub repository
+                git 'https://github.com/yannsen/dockerIsika.git'
+
+                // Run Maven on a Unix agent.
+                sh "mvn -Dmaven.test.failure.ignore=true clean package"
+                
+                sh 'mvn --build'
             }
         }
-        stage('Test') {
-            steps {
-                echo 'Testing..'
+        
+        stage('Test') { 
+            steps{
+                sh "mvn test"
             }
         }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
+
+        stage('docker') {
+            steps{
+               sh "docker build -t imDocker."
             }
         }
     }
